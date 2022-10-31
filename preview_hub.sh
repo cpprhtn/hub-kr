@@ -26,9 +26,9 @@ cd $PREVIEW_DIR
 sed 's/git submodule update/#git submodule update/g' Makefile > Makefile.new
 rm Makefile
 mv Makefile.new Makefile
-echo -e "# deployment \n
-host: 0.0.0.0 \n
-port: 50001" >> _config.yml
+echo '4. _config.yml 파일 수정...'
+echo -e "# deployment \n host: 0.0.0.0 \n port: 50001" >> _config.yml
+cat _config.yml
 rbenv local
 #nvm use
 make serve
