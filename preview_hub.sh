@@ -33,6 +33,9 @@ mv _config3.yml _config.yml
 sed 's/git submodule update/#git submodule update/g' Makefile > Makefile.new
 rm Makefile
 mv Makefile.new Makefile
+sed 's/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.new
+rm Makefile
+mv Makefile.new Makefile
 rbenv local
 #nvm use
 make serve
