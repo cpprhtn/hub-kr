@@ -26,14 +26,14 @@ cd $PREVIEW_DIR
 echo '4. _config.yml 및 Makefile 파일 수정...'
 #echo -e "# deployment \n host: 0.0.0.0 \n port: 50001" >> _config.yml
 sed -e '6 i\#deployment' _config.yml > _config1.yml
-sed -e '7 i\host: 0.0.0.0' _config1.yml > _config2.yml
+sed -e '7 i\host: localhost' _config1.yml > _config2.yml
 sed -e '8 i\port: 50001' _config2.yml > _config3.yml
 rm _config.yml _config1.yml _config2.yml
 mv _config3.yml _config.yml
 sed 's/git submodule update/#git submodule update/g' Makefile > Makefile.new
 rm Makefile
 mv Makefile.new Makefile
-sed 's/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.new
+sed 's/localhost:4000/localhost:50001/g' Makefile > Makefile.new
 rm Makefile
 mv Makefile.new Makefile
 rbenv local
