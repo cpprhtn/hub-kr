@@ -8,8 +8,6 @@ services:
       - "50001:50001"
     volumes:
       - .:/hub-kr/_preview
-      - ./docker-compose.yml:/docker-compose.yml
-      - ./Dockerfile:/Dockerfile
 
     networks:
       - local-net
