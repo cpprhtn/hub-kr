@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  hub-kr:
+    container_name: "pytorchkr"
+    build: .
+    ports:
+      - "50001:50001"
+    volumes:
+      - .:/hub-kr/_preview
+      - ./docker-compose.yml:/docker-compose.yml
+      - ./Dockerfile:/Dockerfile
+
+    networks:
+      - local-net
+
+networks:
+  local-net:
+    driver: bridge
