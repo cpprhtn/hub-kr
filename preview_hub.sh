@@ -24,18 +24,11 @@ echo '   빌드가 되지 않는 경우 README.md 파일을 참조해주세요.'
 echo '   (ruby, nodejs 및 의존성 설치가 필요합니다.)'
 cd $PREVIEW_DIR
 echo '4. _config.yml 및 Makefile 파일 수정...'
-#echo -e "# deployment \n host: 0.0.0.0 \n port: 50001" >> _config.yml
-sed -e '6 i\#deployment' _config.yml > _config1.yml
-sed -e '7 i\host: 0.0.0.0' _config1.yml > _config2.yml
-sed -e '8 i\port: 50001' _config2.yml > _config3.yml
-rm _config.yml _config1.yml _config2.yml
-mv _config3.yml _config.yml
-sed 's/git submodule update/#git submodule update/g' Makefile > Makefile.new
-rm Makefile
-mv Makefile.new Makefile
-sed 's/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.new
-rm Makefile
-mv Makefile.new Makefile
+# _config.yml 파일 수정
+sed -e '6i\#deployment' -e '7i\host: 0.0.0.0' -e '8i\port: 50001' _config.yml > _config.yml.tmp && mv _config.yml.tmp _config.yml
+
+# Makefile 파일 수정
+sed -e 's/git submodule update/#git submodule update/g; s/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
+
 rbenv local
-#nvm use
 make serve
