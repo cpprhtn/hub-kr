@@ -3,15 +3,13 @@
 PREVIEW_DIR=_preview
 
 # Clone pytorch.kr site source
-echo 'cpprhtn test'
 echo '1. hub-kr 저장소 빌드를 위해 PyTorch.KR 홈페이지 저장소를 복제합니다...'
 echo '   (기존에 복제한 저장소가 있으면 삭제 후 복제합니다.)'
 if [ -d $PREVIEW_DIR ]; then
   rm -rf $PREVIEW_DIR
 fi
 
-# git clone --recursive https://github.com/PyTorchKorea/pytorch.kr.git --depth 1 $PREVIEW_DIR
-git clone --recursive -b docker --single-branch https://github.com/cpprhtn/pytorch.kr.git --depth 1 $PREVIEW_DIR
+git clone --recursive https://github.com/PyTorchKorea/pytorch.kr.git --depth 1 $PREVIEW_DIR
 echo ' => 완료'
 
 # Copy hub-kr files
