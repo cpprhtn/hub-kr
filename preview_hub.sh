@@ -9,7 +9,8 @@ if [ -d $PREVIEW_DIR ]; then
   rm -rf $PREVIEW_DIR
 fi
 
-git clone --recursive https://github.com/PyTorchKorea/pytorch.kr.git --depth 1 $PREVIEW_DIR
+# git clone --recursive https://github.com/PyTorchKorea/pytorch.kr.git --depth 1 $PREVIEW_DIR
+git clone -b docker --recursive --single-branch https://github.com/cpprhtn/pytorch.kr.git --depth 1 $PREVIEW_DIR
 echo ' => 완료'
 
 # Copy hub-kr files
