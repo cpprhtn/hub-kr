@@ -9,7 +9,7 @@ if [ -d $PREVIEW_DIR ]; then
   rm -rf $PREVIEW_DIR
 fi
 
-git clone --recursive https://github.com/cpprhtn/pytorch.kr.git --depth 1 $PREVIEW_DIR
+git clone --recursive https://github.com/PyTorchKorea/pytorch.kr.git --depth 1 $PREVIEW_DIR
 echo ' => 완료'
 
 # Copy hub-kr files
@@ -23,12 +23,12 @@ echo '3. PyTorch.KR 홈페이지를 빌드합니다...'
 echo '   빌드가 되지 않는 경우 README.md 파일을 참조해주세요.'
 echo '   (ruby, nodejs 및 의존성 설치가 필요합니다.)'
 cd $PREVIEW_DIR
-# echo '4. _config.yml 및 Makefile 파일 수정...'
-# # _config.yml 파일 수정
-# sed -e '6i\#deployment' -e '7i\host: 0.0.0.0' -e '8i\port: 50001' _config.yml > _config.yml.tmp && mv _config.yml.tmp _config.yml
+echo '4. _config.yml 및 Makefile 파일 수정...'
+# _config.yml 파일 수정
+sed -e '6i\#deployment' -e '7i\host: 0.0.0.0' -e '8i\port: 50001' _config.yml > _config.yml.tmp && mv _config.yml.tmp _config.yml
 
-# # Makefile 파일 수정
-# sed -e 's/git submodule update/#git submodule update/g; s/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
+# Makefile 파일 수정
+sed -e 's/git submodule update/#git submodule update/g; s/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
 
 rbenv local
 make serve
