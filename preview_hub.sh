@@ -25,7 +25,7 @@ echo '   (ruby, nodejs 및 의존성 설치가 필요합니다.)'
 cd $PREVIEW_DIR
 echo '4. _config.yml 및 Makefile 파일 수정...'
 # _config.yml 파일 수정
-sed -e '114i\#deployment' -e '115i\host: 0.0.0.0' -e '116i\port: 50001' _config.yml > _config.yml.tmp && mv _config.yml.tmp _config.yml
+sed -e '2i\#deployment' -e '3i\host: 0.0.0.0' -e '4i\port: 50001' _config.yml > _config.yml.tmp && mv _config.yml.tmp _config.yml
 
 # Makefile 파일 수정
 sed -e 's/git submodule update/#git submodule update/g; s/localhost:4000/0.0.0.0:50001/g' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
